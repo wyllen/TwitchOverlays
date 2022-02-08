@@ -1,0 +1,263 @@
+//VARIABLES
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+
+$purpleDark: #0f0c1e;
+$purple: #1b1535;
+$pink: #a405c6;
+$leftbarWidth: 224px;
+$bottombarHeight: 48px;
+$gap: 32px;
+$px: 4px;
+
+//ANIMATIONS
+@keyframes light {
+  0%,
+  10%,
+  100% {
+    box-shadow: 0 0 $px $px/2 $pink;
+  }
+  5% {
+    box-shadow: 0 0 $px * 3 $px * 2 $pink;
+  }
+}
+
+@keyframes lightTube {
+  100%,
+  0% {
+    box-shadow: 0 0 60px 0px $pink;
+  }
+  50% {
+    box-shadow: 0 0 120px 10px $pink;
+  }
+}
+
+@keyframes neonText {
+  100%,
+  0% {
+    text-shadow: 0 0 2px #fff, 0 0 5px #fff, 0 0 10px #fff, 0 0 20px $pink,
+      0 0 40px $pink, 0 0 45px $pink, 0 0 50px $pink, 0 0 75px $pink;
+  }
+  50% {
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #fff, 0 0 40px $pink,
+      0 0 80px $pink, 0 0 90px $pink, 0 0 100px $pink, 0 0 150px $pink;
+  }
+}
+
+//RESET
+html {
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ol,
+ul {
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+//Styles
+body {
+  font-family: "Press Start 2P", cursive;
+  background: transparent;
+  &.background {
+    background: $purpleDark;
+  }
+}
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1920px;
+  height: 1080px;
+  &__viewers {
+    flex: 0 0 8rem;
+  }
+  &__last-follower {
+    flex: 1 1 auto;
+  }
+  &__last-sub {
+    flex: 1 1 auto;
+  }
+  &__followers-goal {
+    flex: 0 0 28.8rem;
+  }
+  &__electricity {
+    position: absolute;
+    left: $leftbarWidth + $gap;
+    top: 0;
+    z-index: 2;
+  }
+  &__roach {
+    position: absolute;
+    top: -50px;
+    left: 0px;
+  }
+  &__bigtube {
+    position: absolute;
+    z-index: 2;
+    top: -92px;
+    right: $gap;
+    animation: lightTube 3s infinite;
+  }
+  &__leftbar {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    width: $leftbarWidth;
+    top: $gap;
+    left: $px * 3;
+    bottom: $gap + $bottombarHeight;
+  }
+  &__box {
+    position: relative;
+    //background: $purple;
+    background: transparent;
+    color: #000;
+    border: $px solid;
+    box-shadow: inset 0 ($px * 2 * -1) #000, -$px/2 $px/2 * -1 #000,
+      $px/2 * -2 $px/2 * -2 #000, $px/2 * -3 $px/2 * -3 #000,
+      $px/2 * -4 $px/2 * -4 #000, $px/2 * -5 $px/2 * -5 #000,
+      $px/2 * -6 $px/2 * -6 #000, $px/2 * -7 $px/2 * -7 #000;
+    &:not([class*="screen"]) {
+      background: url("../images/crt-effect.png");
+    }
+    &:before {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: $px;
+      height: $px;
+      width: $px;
+      background: #fff;
+      border: $px/2 solid rgba($pink, 0.4);
+      animation: light 10s ease infinite;
+    }
+    &:not(:first-child):after {
+      content: url("../images/tube-labo-overlay.gif");
+      position: absolute;
+      top: -4px;
+      left: -36px;
+      transform: rotate(-90deg);
+    }
+    [class*="leftbar"] &:after {
+      content: url("../images/tube-labo-overlay.gif");
+      position: absolute;
+      top: auto;
+      z-index: 1;
+      bottom: -37px;
+      left: $gap;
+      transform: rotate(0) scaleX(-1);
+    }
+    .intro &[class*="screen"]::after {
+      transform: rotate(0) scaleX(-1);
+      top: auto;
+      bottom: -40px;
+      left: 20px;
+      z-index: 2;
+    }
+  }
+  &__screen {
+    position: absolute;
+    height: 920px;
+    right: $px;
+    left: $leftbarWidth + $gap + ($px * 3);
+    bottom: $gap + $bottombarHeight;
+    .fullcam & {
+      right: 60px;
+    }
+    .fullscreen-cam & {
+      position: absolute;
+      right: auto;
+      left: 14px;
+      bottom: -12px;
+      width: calc(100% - 18px);
+      height: 1040px;
+    }
+    .intro & {
+      right: auto;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 1648px;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      h2 {
+        margin-top: 2rem;
+      }
+
+      h1,
+      h2 {
+        color: #fff;
+        animation: neonText 3s infinite;
+      }
+    }
+  }
+  &__chat {
+    flex: 1 1 auto;
+    &:not(:last-child) {
+      margin-bottom: $gap;
+    }
+  }
+  &__cam {
+    width: 100%;
+    height: 0;
+    padding-bottom: 80%;
+    .fullscreen-cam & {
+      position: absolute;
+      bottom: 80px;
+      right: 4px;
+      padding-bottom: 0;
+      width: 200px;
+      height: 170px;
+      z-index: 2;
+      &::after {
+        transform: rotate(0) scaleX(-1);
+        top: auto;
+        bottom: -37px;
+        left: auto;
+        right: 20px;
+        z-index: 2;
+      }
+    }
+  }
+  &__bottombar {
+    position: absolute;
+    display: flex;
+    bottom: 0;
+    left: $px * 3;
+    right: $px;
+    height: $bottombarHeight;
+    > * {
+      &:not(:last-child) {
+        margin-right: $gap;
+      }
+    }
+  }
+}

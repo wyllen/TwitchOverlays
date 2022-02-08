@@ -1,0 +1,33 @@
+{
+  "name": "twitch-overlays",
+  "version": "0.0.1",
+  "description": "",
+  "author": "Vincent DURAND (Wyllen)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "10.4.2",
+    "browser-sync": "^2.27.7",
+    "cssnano": "^4.1.10",
+    "gulp": "^4.0.2",
+    "gulp-dart-sass": "^1.0.2",
+    "gulp-htmlmin": "^5.0.1",
+    "gulp-postcss": "^9.0.0",
+    "gulp-sass": "^5.1.0",
+    "gulp-terser": "^1.4.0",
+    "postcss": "^8.1.2",
+    "sass": "^1.49.0"
+  },
+  "dependencies": {
+    "browserslist": "^4.19.1",
+    "del": "^6.0.0",
+    "gulp-exec": "^5.0.0"
+  },
+  "browserslist": [
+    "> 2%"
+  ]
+}
